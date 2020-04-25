@@ -6,11 +6,11 @@ This Script will Automatically Switch between My Setup Cam and My Face Cam every
 
 - Two Webcams (I use two Logitech Brio's)  
 
-- OBS-Studio [Link](https://obsproject.com/)  
+- OBS-Studio [Direct Website Link](https://obsproject.com/)  
 
-- OBS-Websocket [Link](https://obsproject.com/forum/resources/obs-websocket-remote-control-obs-studio-from-websockets.466/)  
+- OBS-Websocket [Forums Plugin Page](https://obsproject.com/forum/resources/obs-websocket-remote-control-obs-studio-from-websockets.466/)  
 
-# Prepreation  
+# Preparation  
 
 1. Create a Scene New Scene for the Webcams.  
 
@@ -24,7 +24,7 @@ This Script will Automatically Switch between My Setup Cam and My Face Cam every
 
 2. Open the SwitchCams.html file in an editor. `(VCS, NP++, Etc..)`  
 
-3. Edit the definded VARS as needed. `(Read the Comments I Added)`  
+3. Edit the defined VARS as needed. `(Read the Comments I Added)`  
 
 4. In OBS-Studio: `Add a New Browser Source > Local File > SwitchCams.html`  
 
