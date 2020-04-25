@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>OBS-Studio Auto Cam Switcher</title>
+    <meta name="description" content="OBS-Studio Auto Cam Switcher" />
+    <meta name="author" content="SOWHOYOUdotCOM" />
+  </head>
+  <body>
+    <script type="text/javascript" src="obs-websocket.js"></script>
+
+    <script>
+      const obs = new OBSWebSocket();
+
+      var obs_websocket_host = "localhost";
+      var obs_websocket_port = "4444";
+      var obs_websocket_pass = "";
+
+      var switch_delay = 15; // Time in Seconds between each Cam Switch
+      var enabled_cam = true; // Cam Switch Flag + Cam One Default State
+      var cam_scene = "Webcam Collection"; // Name of the Scene with the Cams
+      var cam_one_source = "Setup Cam Source"; // The Source Name of Cam One
+      var cam_two_source = "Face Cam Source"; // The Source Name of Cam Two
+
+      obs
+        .connect({
+          address: obs_websocket_host + ":" + obs_websocket_port,
+          password: obs_websocket_pass,
+        })
+        .then(() => {
+          switch_cams();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      obs.on("error", (err) => {
+        console.error("socket error:", err);
+      });
+
+      myloop = setInterval(function () {
+        switch_cams();
+      }, (switch_delay * 1000));
+
+      function switch_cams() {
+        obs.send("SetSceneItemProperties", {
+          "scene-name": cam_scene,
+          item: cam_one_source,
+          visible: enabled_cam,
+        });
+        obs.send("SetSceneItemProperties", {
+          "scene-name": cam_scene,
+          item: cam_two_source,
+          visible: !enabled_cam,
+        });
+        enabled_cam = !enabled_cam;
+      }
+    </script>
+  </body>
+</html>
