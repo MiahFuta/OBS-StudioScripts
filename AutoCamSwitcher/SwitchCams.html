@@ -22,8 +22,7 @@
       var cam_one_source = "Setup Cam Source"; // The Source Name of Cam One
       var cam_two_source = "Face Cam Source"; // The Source Name of Cam Two
 
-      obs
-        .connect({
+      obs.connect({
           address: obs_websocket_host + ":" + obs_websocket_port,
           password: obs_websocket_pass,
         })
